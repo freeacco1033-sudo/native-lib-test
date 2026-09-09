@@ -1,0 +1,13 @@
+name: Build Native Lib
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build .so
+        run: bash build.sh
+      - uses: actions/upload-artifact@v3
+        with:
+          name: native-libs
+          path: libs/
